@@ -4,7 +4,7 @@
         <title>Bohua xu</title>
         <link>https://antfu.me/</link>
         <description>bohua xu' Blog</description>
-        <lastBuildDate>Sat, 24 Sep 2022 06:30:04 GMT</lastBuildDate>
+        <lastBuildDate>Sun, 25 Sep 2022 13:58:42 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <image>
@@ -16,8 +16,8 @@
         <atom:link href="https://antfu.me/feed.xml" rel="self" type="application/rss+xml"/>
         <item>
             <title><![CDATA[?.]]></title>
-            <link>https://antfu.me/posts/jottingsl</link>
-            <guid>https://antfu.me/posts/jottingsl</guid>
+            <link>https://xubh.top/posts/jottingsl</link>
+            <guid>https://xubh.top/posts/jottingsl</guid>
             <pubDate>Fri, 26 Aug 2022 08:00:00 GMT</pubDate>
             <description><![CDATA[Compound Components]]></description>
             <content:encoded><![CDATA[<p>[[toc]]</p>
@@ -164,12 +164,12 @@ console.log(customerCity); // “暗之城”
 <h2>MDN</h2>
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining</a></p>
 ]]></content:encoded>
-            <author>hi@antfu.me (Bohua xu)</author>
+            <author>xu2526@outlook.com (Bohua Xu)</author>
         </item>
         <item>
             <title><![CDATA[useContext -useReducer]]></title>
-            <link>https://antfu.me/posts/destructuring-with-object-or-array</link>
-            <guid>https://antfu.me/posts/destructuring-with-object-or-array</guid>
+            <link>https://xubh.top/posts/destructuring-with-object-or-array</link>
+            <guid>https://xubh.top/posts/destructuring-with-object-or-array</guid>
             <pubDate>Tue, 21 Dec 2021 16:00:00 GMT</pubDate>
             <description><![CDATA[Prefer object destructure or array? Can we support both?]]></description>
             <content:encoded><![CDATA[<p>[[toc]]</p>
@@ -294,8 +294,8 @@ const Counter = () =&gt;{
 }
 </code></pre>
 ]]></content:encoded>
-            <author>hi@antfu.me (Bohua xu)</author>
-            <enclosure url="https://antfu.me/images/destructuring.png" length="0" type="image/png"/>
+            <author>xu2526@outlook.com (Bohua Xu)</author>
+            <enclosure url="https://xubh.top/images/destructuring.png" length="0" type="image/png"/>
         </item>
     </channel>
 </rss>

@@ -2,12 +2,12 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://antfu.me/</id>
     <title>Bohua xu</title>
-    <updated>2022-09-24T06:30:04.804Z</updated>
+    <updated>2022-09-25T13:58:42.613Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
-        <name>Bohua xu</name>
-        <email>hi@antfu.me</email>
-        <uri>https://antfu.me</uri>
+        <name>Bohua Xu</name>
+        <email>xu2526@outlook.com</email>
+        <uri>https://xubh.top</uri>
     </author>
     <link rel="alternate" href="https://antfu.me/"/>
     <link rel="self" href="https://antfu.me/feed.atom"/>
@@ -17,8 +17,8 @@
     <rights>CC BY-NC-SA 4.0 2021 © bohua</rights>
     <entry>
         <title type="html"><![CDATA[?.]]></title>
-        <id>https://antfu.me/posts/jottingsl</id>
-        <link href="https://antfu.me/posts/jottingsl"/>
+        <id>https://xubh.top/posts/jottingsl</id>
+        <link href="https://xubh.top/posts/jottingsl"/>
         <updated>2022-08-26T08:00:00.000Z</updated>
         <summary type="html"><![CDATA[Compound Components]]></summary>
         <content type="html"><![CDATA[<p>[[toc]]</p>
@@ -166,15 +166,15 @@ console.log(customerCity); // “暗之城”
 <p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/Optional_chaining</a></p>
 ]]></content>
         <author>
-            <name>Bohua xu</name>
-            <email>hi@antfu.me</email>
-            <uri>https://antfu.me</uri>
+            <name>Bohua Xu</name>
+            <email>xu2526@outlook.com</email>
+            <uri>https://xubh.top</uri>
         </author>
     </entry>
     <entry>
         <title type="html"><![CDATA[useContext -useReducer]]></title>
-        <id>https://antfu.me/posts/destructuring-with-object-or-array</id>
-        <link href="https://antfu.me/posts/destructuring-with-object-or-array"/>
+        <id>https://xubh.top/posts/destructuring-with-object-or-array</id>
+        <link href="https://xubh.top/posts/destructuring-with-object-or-array"/>
         <updated>2021-12-21T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[Prefer object destructure or array? Can we support both?]]></summary>
         <content type="html"><![CDATA[<p>[[toc]]</p>
@@ -300,9 +300,9 @@ const Counter = () =&gt;{
 </code></pre>
 ]]></content>
         <author>
-            <name>Bohua xu</name>
-            <email>hi@antfu.me</email>
-            <uri>https://antfu.me</uri>
+            <name>Bohua Xu</name>
+            <email>xu2526@outlook.com</email>
+            <uri>https://xubh.top</uri>
         </author>
     </entry>
 </feed>
