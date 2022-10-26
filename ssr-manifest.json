@@ -37,134 +37,134 @@
   "../../logo-xudark.svg?url": [],
   "../../lofo-xu.svg?url": [],
   "src/components/NavBar.vue?vue&type=script&setup=true&lang.ts": [],
-  "src/components/NavBar.vue?vue&type=style&index=0&scoped=abd64fe0&lang.css": [],
+  "src/components/NavBar.vue?vue&type=style&index=0&scoped=161b266a&lang.css": [],
   "src/components/NavBar.vue": [],
   "src/App.vue?vue&type=script&setup=true&lang.ts": [],
   "src/main.ts": [],
   "index.html": [],
-  "assets/app.143c14a1.js-unocss-hash.css": [],
+  "assets/app.2da75011.js-unocss-hash.css": [],
+  "pages/blogroll.md": [
+    "/assets/blogroll.ef763bb7.js"
+  ],
   "pages/bookmarks.md": [
-    "/assets/bookmarks.cdc19a7c.js"
+    "/assets/bookmarks.2df74166.js"
   ],
   "pages/jottings.md": [
-    "/assets/jottings.6056262c.js"
+    "/assets/jottings.12e03e85.js"
   ],
   "src/components/AppLink.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/SubNav.vue_vue_type_script_setup_true_lang.ef7b311d.js"
+    "/assets/SubNav.vue_vue_type_script_setup_true_lang.2ad9328c.js"
   ],
   "src/components/ListPosts.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/SubNav.vue_vue_type_script_setup_true_lang.ef7b311d.js"
+    "/assets/SubNav.vue_vue_type_script_setup_true_lang.2ad9328c.js"
   ],
   "src/components/SubNav.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/SubNav.vue_vue_type_script_setup_true_lang.ef7b311d.js"
-  ],
-  "pages/notes.md": [
-    "/assets/notes.2ae0efa7.js"
+    "/assets/SubNav.vue_vue_type_script_setup_true_lang.2ad9328c.js"
   ],
   "src/components/icons/Vitest.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/Unocss.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/VueDemi.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/VueReactivity.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/VueUse.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/Slidev.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/ListProjects.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/ListProjects.vue?vue&type=style&index=0&scoped=18c53f65&lang.css": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/ListProjects.vue": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
   "pages/projects.md": [
-    "/assets/projects.d110a1a7.js",
+    "/assets/projects.86cbce5c.js",
     "/assets/projects.e1746190.css"
   ],
-  "pages/sponsors-list.md": [
-    "/assets/sponsors-list.9b82a0df.js"
-  ],
-  "pages/talks.md": [
-    "/assets/talks.aad23060.js"
+  "pages/react.md": [
+    "/assets/react.03a4b421.js"
   ],
   "pages/vue.md": [
-    "/assets/vue.8df5f3b8.js"
+    "/assets/vue.94e8f1da.js"
+  ],
+  "pages/wechat.md": [
+    "/assets/wechat.9011203f.js"
   ],
   "pages/[...404].md": [
-    "/assets/_...404_.8c8566fb.js"
+    "/assets/_...404_.72420d2f.js"
   ],
   "pages/links/chat-zh.md": [
-    "/assets/chat-zh.bde488ed.js"
+    "/assets/chat-zh.c1ce1b58.js"
   ],
   "pages/posts/Context.md": [
-    "/assets/Context.c5716eef.js"
+    "/assets/Context.cc6e49f5.js"
   ],
   "pages/posts/Css in Js.md": [
-    "/assets/Css in Js.c81ec0c3.js"
+    "/assets/Css in Js.fea7a636.js"
   ],
   "pages/posts/destructuring-with-object-or-array.md": [
-    "/assets/destructuring-with-object-or-array.2640fa82.js"
+    "/assets/destructuring-with-object-or-array.ab3283a5.js"
   ],
   "pages/posts/github-co-authors.md": [
-    "/assets/github-co-authors.27b63859.js"
+    "/assets/github-co-authors.354c7580.js"
   ],
   "pages/posts/GSAP.md": [
-    "/assets/GSAP.414bcd1a.js"
+    "/assets/GSAP.3b072512.js"
   ],
   "pages/posts/index.md": [
-    "/assets/index.32d17256.js"
+    "/assets/index.016ff736.js"
   ],
   "pages/posts/introduction-to-vitest-vue-nation-2022.md": [
-    "/assets/introduction-to-vitest-vue-nation-2022.09298956.js"
+    "/assets/introduction-to-vitest-vue-nation-2022.01d16c81.js"
   ],
   "pages/posts/jottingsl.md": [
-    "/assets/jottingsl.c96400ff.js"
+    "/assets/jottingsl.5ccd450d.js"
   ],
   "pages/posts/jottingsoo.md": [
-    "/assets/jottingsoo.1179faca.js"
+    "/assets/jottingsoo.56cbbbbe.js"
   ],
   "pages/posts/propsdaring.md": [
-    "/assets/propsdaring.f00ae216.js"
+    "/assets/propsdaring.c7942f98.js"
   ],
   "pages/posts/ReactNactive.md": [
-    "/assets/ReactNactive.03b18b18.js"
+    "/assets/ReactNactive.370c6fd4.js"
   ],
   "pages/posts/react_toolkit.md": [
-    "/assets/react_toolkit.69105031.js"
+    "/assets/react_toolkit.9bd76dc9.js"
   ],
   "pages/posts/reducer.md": [
-    "/assets/reducer.10c39472.js"
+    "/assets/reducer.0f74cd0f.js"
   ],
   "pages/posts/reduceroo.md": [
-    "/assets/reduceroo.7f5011aa.js"
+    "/assets/reduceroo.e172dd73.js"
   ],
   "pages/posts/types.md": [
-    "/assets/types.debd02cf.js"
+    "/assets/types.96f4e296.js"
   ],
   "pages/posts/useStateoo.md": [
-    "/assets/useStateoo.c6886c84.js"
+    "/assets/useStateoo.99353d47.js"
   ],
   "pages/posts/weather.md": [
-    "/assets/weather.6b478b7c.js"
+    "/assets/weather.e943d16f.js"
   ]
 }
