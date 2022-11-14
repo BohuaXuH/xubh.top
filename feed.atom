@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://antfu.me/</id>
     <title>Bohua xu</title>
-    <updated>2022-11-07T13:37:59.539Z</updated>
+    <updated>2022-11-14T17:35:15.165Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Bohua Xu</name>
@@ -15,6 +15,218 @@
     <logo>https://s1.imgbed.xyz/2022/09/23/kSyVq.png</logo>
     <icon>https://s1.imgbed.xyz/2022/09/23/kSyVq.png</icon>
     <rights>CC BY-NC-SA 4.0 2021 © bohua</rights>
+    <entry>
+        <title type="html"><![CDATA[Why  Breaking Up with CSS-in-JS]]></title>
+        <id>https://xubh.top/posts/whybreakingccinjs</id>
+        <link href="https://xubh.top/posts/whybreakingccinjs"/>
+        <updated>2022-11-15T08:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Why We're Breaking Up with CSS-in-JS]]></summary>
+        <content type="html"><![CDATA[<p>[[toc]]</p>
+<p>Recently,I saw that Sam's company gave up the css-in-js solution.The original text is very good,from the pros to the cons.The start with performance issues to explain why your company had to ditch css-in-js,and finally tell readers that their solution is css-modules.</p>
+<h2>What is CSS-in-JS?</h2>
+<p>As the name suggests, CSS-in-JS allows you to style your React components by writing CSS directly in your JavaScript or TypeScript code:</p>
+<pre><code class="language-js">// @emotion/react (css prop), with object styles
+function ErrorMessage({ children }) {
+  return (
+    &lt;div
+      css={{
+        color: 'red',
+        fontWeight: 'bold',
+      }}
+    &gt;
+      {children}
+    &lt;/div&gt;
+  );
+}
+
+// styled-components or @emotion/styled, with string styles
+const ErrorMessage = styled.div`
+  color: red;
+  font-weight: bold;
+`;
+</code></pre>
+<h2>The Good, The Bad, and the Ugly of CSS-in-JS</h2>
+<p>Before we get into the nitty-gritty of specific CSS-in-JS coding patterns and their implications for performance, let's start with a high-level overview of why you might choose to adopt the technology, and why you might not.</p>
+<h3>The Good</h3>
+<p><strong>1. Locally-scoped styles.</strong> When writing plain CSS, it's very easy to accidentally apply styles more widely than you intended. For example, imagine you're making a list view where each row should have some padding and a border. You'd likely write CSS like this:</p>
+<pre><code>   .row {
+     padding: 0.5rem;
+     border: 1px solid #ddd;
+   }
+</code></pre>
+<p>Several months later when you've completely forgotten about the list view, you create another component that has rows. Naturally, you set <code>className=&quot;row&quot;</code> on these elements. Now the new component's rows have an unsightly border and you have no idea why! While this type of problem can be solved by using longer class names or more specific selectors, it's still on you as the developer to ensure there are no class name conflicts.</p>
+<p>CSS-in-JS completely solves this problem by making styles locally-scoped by default. If you were to write your list view row as</p>
+<pre><code>&lt;div css={{ padding: '0.5rem', border: '1px solid #ddd' }}&gt;...&lt;/div&gt;
+</code></pre>
+<p>there is no way the padding and border can accidentally get applied to unrelated elements.</p>
+<blockquote>
+<p>Note: CSS Modules also provide locally-scoped styles.</p>
+</blockquote>
+<p><strong>2. Colocation.</strong> If using plain CSS, you might put all of your <code>.css</code> files in a <code>src/styles</code> directory, while all of your React components live in <code>src/components</code>. As the size of the application grows, it quickly becomes difficult to tell which styles are used by each component. Often times, you will end up with dead code in your CSS because there's no easy way to tell that the styles aren't being used.</p>
+<p>A better approach for organizing your code is to <strong>include everything related to a single component in same place.</strong> This practice, called colocation, has been covered in an <a href="https://kentcdodds.com/blog/colocation">excellent blog post</a> by Kent C. Dodds.</p>
+<p>The problem is that it's hard to implement colocation when using plain CSS, since CSS and JavaScript have to go in separate files, and your styles will apply globally regardless of where the <code>.css</code> file is located. On the other hand, if you're using CSS-in-JS, you can write your styles directly inside the React component that uses them! If done correctly, this greatly improves the maintainability of your application.</p>
+<blockquote>
+<p>Note: CSS Modules also allow you to colocate styles with components, though not in the same file.</p>
+</blockquote>
+<p><strong>3. You can use JavaScript variables in styles.</strong> CSS-in-JS enables you to reference JavaScript variables in your style rules, e.g.:</p>
+<pre><code>// colors.ts
+export const colors = {
+  primary: '#0d6efd',
+  border: '#ddd',
+  /* ... */
+};
+
+// MyComponent.tsx
+function MyComponent({ fontSize }) {
+  return (
+    &lt;p
+      css={{
+        color: colors.primary,
+        fontSize,
+        border: `1px solid ${colors.border}`,
+      }}
+    &gt;
+      ...
+    &lt;/p&gt;
+  );
+}
+</code></pre>
+<p>As this example shows, you can use both JavaScript constants (e.g. <code>colors</code>) and React props / state (e.g. <code>fontSize</code>) in CSS-in-JS styles. The ability to use JavaScript constants in styles reduces duplication in some cases, since the same constant does not have to be defined as both a CSS variable and a JavaScript constant. The ability to use props &amp; state allows you to create components with highly-customizable styles, without using inline styles. (Inline styles are not ideal for performance when the same styles are applied to many elements.)</p>
+<h3>The Neutral</h3>
+<p><strong>1. It's the hot new technology.</strong> Many web developers, myself included, are quick to adopt the hottest new trends in the JavaScript community. Part of this is rationale, since in many cases, new libraries and frameworks have proven to be massive improvements over their predecessors (just think about how much React enhances productivity over earlier libraries like jQuery). On the other hand, the other part of our obsession with shiny new tools is just that — an obsession. We're afraid of missing out on the next big thing, and we might overlook real drawbacks when deciding to adopt a new library or framework. I think this has certainly been a factor in the widespread adoption of CSS-in-JS — at least it was for me.</p>
+<h3>The Bad</h3>
+<p><strong>1. CSS-in-JS adds runtime overhead.</strong> When your components render, the CSS-in-JS library must &quot;serialize&quot; your styles into plain CSS that can be inserted into the document. It's clear that this takes up extra CPU cycles, but is it enough to have a noticeable impact on the performance of your application? <strong>We'll investigate this question in depth in the next section.</strong></p>
+<p><strong>2. CSS-in-JS increases your bundle size.</strong> This is an obvious one — each user who visits your site now has to download the JavaScript for the CSS-in-JS library. Emotion is <a href="https://bundlephobia.com/package/@emotion/react@11.10.4">7.9 kB</a> minzipped and styled-components is <a href="https://bundlephobia.com/package/styled-components@5.3.6">12.7 kB</a>. So neither library is huge, but it all adds up. (<code>react</code> + <code>react-dom</code> is 44.5 kB for comparison.)</p>
+<p><strong>3. CSS-in-JS clutters the React DevTools.</strong> For each element that uses the <code>css</code> prop, Emotion will render <code>&lt;EmotionCssPropInternal&gt;</code> and <code>&lt;Insertion&gt;</code> components. If you are using the <code>css</code> prop on many elements, Emotion's internal components can really clutter up the React DevTools, as seen here:</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--yQZly1Om--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8uh0gzxizoja69rh5ssm.png"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--yQZly1Om--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/8uh0gzxizoja69rh5ssm.png" alt="The React DevTools displaying many internal Emotion components"></a></p>
+<h3>The Ugly</h3>
+<p><strong>1. Frequently inserting CSS rules forces the browser to do a lot of extra work.</strong> <a href="https://github.com/sebmarkbage">Sebastian Markbåge</a>, member of the React core team and the original designer of React Hooks, wrote an <a href="https://github.com/reactwg/react-18/discussions/110">extremely informative discussion</a> in the React 18 working group about how CSS-in-JS libraries would need to change to work with React 18, and about the future of runtime CSS-in-JS in general. In particular, he says:</p>
+<blockquote>
+<p>In concurrent rendering, React can yield to the browser between renders. If you insert a new rule in a component, then React yields, the browser then have to see if those rules would apply to the existing tree. So it recalculates the style rules. Then React renders the next component, and then that component discovers a new rule and it happens again.</p>
+<p><strong>This effectively causes a recalculation of all CSS rules against all DOM nodes every frame while React is rendering.</strong> This is VERY slow.</p>
+</blockquote>
+<p><strong>Update 2022-10-25:</strong> This quote from Sebastian is specifically referring to performance in React Concurrent Mode, <strong>without</strong> <code>useInsertionEffect</code>. I recommend reading the full discussion if you want an in-depth understanding of this. Thanks to Dan Abramov for <a href="https://twitter.com/dan_abramov/status/1584838817982590976">pointing out</a> this inaccuracy on Twitter.</p>
+<p>The worst thing about this problem is that it's not a fixable issue (within the context of runtime CSS-in-JS). Runtime CSS-in-JS libraries work by inserting new style rules when components render, and this is bad for performance on a fundamental level.</p>
+<p><strong>2. With CSS-in-JS, there's a lot more that can go wrong, especially when using SSR and/or component libraries.</strong> In the Emotion GitHub repository, we receive <em>tons</em> of issues that go like this:</p>
+<blockquote>
+<p>I'm using Emotion with server-side rendering and MUI/Mantine/(another Emotion-powered component library) and it's not working because...</p>
+</blockquote>
+<p>While the root cause varies from issue to issue, there are some common themes:</p>
+<ul>
+<li>Multiple instances of Emotion get loaded at once. This can cause problems even if the multiple instances are all the same version of Emotion. <a href="https://github.com/emotion-js/emotion/issues/2639">(Example issue)</a></li>
+<li>Component libraries often do not give you full control over the order in which styles are inserted. <a href="https://github.com/emotion-js/emotion/issues/2803">(Example issue)</a></li>
+<li>Emotion's SSR support works differently between React 17 and React 18. This was necessary for compatibility with React 18's streaming SSR. <a href="https://github.com/emotion-js/emotion/issues/2725">(Example issue)</a></li>
+</ul>
+<p>And believe me, these sources of complexity are just the tip of the iceberg. (If you're feeling brave, take a look at the <a href="https://github.com/emotion-js/emotion/blob/8a163746f0de5c6a43052db37f14c36d703be7b9/packages/styled/types/base.d.ts">TypeScript definitions for <code>@emotion/styled</code></a>.)</p>
+<h2>Performance Deep Dive</h2>
+<p>At this point, it's clear that there are both significant pros and significant cons to runtime CSS-in-JS. To understand why our team is moving away from the technology, we need to explore the real-world performance impact of CSS-in-JS.</p>
+<p>This section focuses on the performance impact of Emotion, <strong>as it was used in the Spot codebase.</strong> As such, it would be a mistake to assume that the performance numbers presented below apply to your codebase as well — there are many ways to use Emotion, and each of these has its own performance characteristics.</p>
+<h3>Serialization Inside of Render vs. Outside of Render</h3>
+<p><em>Style serialization</em> refers to the process by which Emotion takes your CSS string or object styles and converts them to a plain CSS string that can be inserted into the document. Emotion also computes a hash of the plain CSS during serialization — this hash is what you see in the generated class names, e.g. <code>css-15nl2r3</code>.</p>
+<p>While I have not measured this, I believe one of the most significant factors in how Emotion performs is whether style serialization is performed inside or outside of the React render cycle.</p>
+<p>The examples in the Emotion docs perform serialization inside render, like this:</p>
+<pre><code>function MyComponent() {
+  return (
+    &lt;div
+      css={{
+        backgroundColor: 'blue',
+        width: 100,
+        height: 100,
+      }}
+    /&gt;
+  );
+}
+</code></pre>
+<p>Every time <code>MyComponent</code> renders, the object styles are serialized again. If <code>MyComponent</code> renders frequently (e.g. on every keystroke), the repeated serialization may have a high performance cost.</p>
+<p>A more performant approach is to move the styles outside of the component, so that serialization happens one time when the module loads, instead of on each render. You can do this with the <code>css</code> function from <code>@emotion/react</code>:</p>
+<pre><code>const myCss = css({
+  backgroundColor: 'blue',
+  width: 100,
+  height: 100,
+});
+
+function MyComponent() {
+  return &lt;div css={myCss} /&gt;;
+}
+</code></pre>
+<p>Of course, this prevents you from accessing props in your styles, so you are missing out on one of the main selling points of CSS-in-JS.</p>
+<p><strong>At Spot, we performed style serialization in render, so the following performance analysis will focus on this case.</strong></p>
+<h3>Benchmarking the Member Browser</h3>
+<p>It's finally time to make things concrete by profiling a real component from Spot. We'll be using the Member Browser, a fairly simple list view that shows you all of the users in your team. Virtually all of the Member Browser's styles are using Emotion, specifically the <code>css</code> prop.</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--OKBdkNCP--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2ds504qgf3ni0mjkujyu.png"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--OKBdkNCP--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2ds504qgf3ni0mjkujyu.png" alt="The Member Browser in Spot"></a></p>
+<p>For the test,</p>
+<ul>
+<li>The Member Browser will display 20 users,</li>
+<li>The <code>React.memo</code> around the list items will be removed, and</li>
+<li>We'll force the top-most <code>&lt;BrowseMembers&gt;</code> component to render each second, and record the times for the first 10 renders.</li>
+<li>React Strict Mode is off. (It effectively doubles the render times you see in the profiler.)</li>
+</ul>
+<p>I profiled the page using the React DevTools and got <strong>54.3 ms</strong> as the average of the first 10 render times.</p>
+<p>My personal rule of thumb is that a React component should take 16 ms or less to render, since 1 frame at 60 frames per second is 16.67 ms. The Member Browser is currently over 3 times this figure, so it's a pretty heavyweight component.</p>
+<p>This test was performed on an <strong>M1 Max</strong> CPU which is WAY faster than what the average user will have. The 54.3 ms render time that I got could easily be <strong>200 ms</strong> on a less powerful machine.</p>
+<h3>Analyzing the Flamegraph</h3>
+<p>Here's the flamegraph for a <strong>single list item</strong> from the above test:</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--3F7yQooV--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b8o8ubckz1qrn9753pp0.png"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--3F7yQooV--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b8o8ubckz1qrn9753pp0.png" alt="Performance flamegraph of the BrowseMembersItem component"></a></p>
+<p>As you can see, there are a huge number of <code>&lt;Box&gt;</code> and <code>&lt;Flex&gt;</code> components being rendered — these are our &quot;style primitives&quot; which use the <code>css</code> prop. While each <code>&lt;Box&gt;</code> only takes 0.1 – 0.2 ms to render, this adds up because the total number of <code>&lt;Box&gt;</code> components is massive.</p>
+<h3>Benchmarking the Member Browser, without Emotion</h3>
+<p>To see how much of this expensive render was due to Emotion, I rewrote the Member Browser styles using Sass Modules instead of Emotion. (Sass Modules are compiled to plain CSS at build time, so there is virtually no performance penalty to using them.)</p>
+<p>I repeated the same test described above and got <strong>27.7 ms</strong> as the average of the first 10 renders. That's a <strong>48% decrease</strong> from the original time!</p>
+<p>So, that's the reason we are breaking up with CSS-in-JS: the runtime performance cost is simply too high.</p>
+<p>To repeat my disclaimer from above: this result only directly applies to the Spot codebase and how we were using Emotion. If your codebase is using Emotion in a more performant way (e.g. style serialization outside of render), you will likely see a much smaller benefit after removing CSS-in-JS from the equation.</p>
+<p>Here is the raw data for those who are curious:</p>
+<p><a href="https://res.cloudinary.com/practicaldev/image/fetch/s--ojqusqLA--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uyygzdyyhng3yzzuq95e.png"><img src="https://res.cloudinary.com/practicaldev/image/fetch/s--ojqusqLA--/c_limit%2Cf_auto%2Cfl_progressive%2Cq_auto%2Cw_880/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/uyygzdyyhng3yzzuq95e.png" alt="Spreadsheet showing render times between Emotion and non-Emotion Member Browser"></a></p>
+<h2>Our New Styling System</h2>
+<p>After we made up our minds to switch away from CSS-in-JS, the obvious question is: what should we be using instead? Ideally, we want a styling system that has performance similar to that of plain CSS while keeping as many of the benefits of CSS-in-JS as possible. Here are the primary benefits of CSS-in-JS that I described in the section titled &quot;The Good&quot;:</p>
+<ol>
+<li>Styles are locally-scoped.</li>
+<li>Styles are colocated with the components they apply to.</li>
+<li>You can use JavaScript variables in styles.</li>
+</ol>
+<p>If you paid close attention to that section, you'll remember that I said that CSS Modules also provide locally-scoped styles and colocation. And CSS Modules compile to plain CSS files, so there is no runtime performance cost to using them.</p>
+<p>The main downside to CSS Modules in my mind is that, at end of the day, they are still plain CSS — and plain CSS is lacking features that improve DX and reduce code duplication. While <a href="https://developer.chrome.com/blog/help-css-nesting/">nested selectors</a> are coming to CSS, they aren't here yet, and this feature is a huge quality of life boost for us.</p>
+<p>Fortunately, there is an easy solution to this problem — Sass Modules, which are simply CSS Modules written in <a href="https://sass-lang.com/">Sass</a>. You get the locally-scoped styles of CSS Modules AND the powerful build-time features of Sass, with essentially no runtime cost. This is why Sass Modules will be our general purpose styling solution going forward.</p>
+<blockquote>
+<p>Side note: With Sass Modules, you lose benefit 3 of CSS-in-JS (the ability to use JavaScript variables in styles). Though, you can use an <code>:export</code> block in your Sass file to make constants from the Sass code available to JavaScript. This isn't as convenient, but it keeps things DRY.</p>
+</blockquote>
+<h3>Utility Classes</h3>
+<p>One concern the team had about switching from Emotion to Sass Modules is that it would be less convenient to apply extremely common styles, like <code>display: flex</code>. Before, we would write:</p>
+<pre><code>&lt;FlexH alignItems=&quot;center&quot;&gt;...&lt;/FlexH&gt;
+</code></pre>
+<p>To do this using only Sass Modules, we would have to open the <code>.module.scss</code> file and create a class that applies the styles <code>display: flex</code> and <code>align-items: center</code>. It's not the end of the world, but it's definitely less convenient.</p>
+<p>To improve the DX around this, we decided to bring in a utility class system. If you aren't familiar with utility classes, they are CSS classes that set a single CSS property on the element. Usually, you will combine multiple utility classes to get the desired styles. For the example above, you would write something like this:</p>
+<pre><code>&lt;div className=&quot;d-flex align-items-center&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<p><a href="https://getbootstrap.com/">Bootstrap</a> and <a href="https://tailwindcss.com/">Tailwind</a> are the most popular CSS frameworks that offer utility classes. These libraries have put a lot of design effort into their utility systems, so it made the most sense to adopt one of them instead of rolling our own. I had already been using Bootstrap for years, so we went with Bootstrap. While you can bring in the Bootstrap utility classes as a pre-built CSS file, we needed to customize the classes to fit our existing styling system, so I copied the relevant parts of the Bootstrap source code into our project.</p>
+<p>We've been using Sass Modules and utility classes for new components for several weeks now and are quite happy with it. The DX is similar to that of Emotion, and the runtime performance is vastly superior.</p>
+<blockquote>
+<p>Side note: We're also using the <a href="https://www.npmjs.com/package/typed-scss-modules">typed-scss-modules</a> package to generate TypeScript definitions for our Sass Modules. Perhaps the largest benefit of this is that it allowed us to define a <code>utils()</code> helper function that works like <a href="https://www.npmjs.com/package/classnames">classnames</a>, except it only accepts valid utility class names as arguments.</p>
+</blockquote>
+<h3>A Note about Compile-Time CSS-in-JS</h3>
+<p>This article focused on runtime CSS-in-JS libraries like Emotion and styled-components. Recently, we've seen an increasing number of CSS-in-JS libraries that convert your styles to plain CSS at compile time. These include:</p>
+<ul>
+<li><a href="https://compiledcssinjs.com/">Compiled</a></li>
+<li><a href="https://vanilla-extract.style/">Vanilla Extract</a></li>
+<li><a href="https://linaria.dev/">Linaria</a></li>
+</ul>
+<p>These libraries purport to provide a similar benefits to runtime CSS-in-JS, without the performance cost.</p>
+<p>While I have not used any compile-time CSS-in-JS libraries myself, I still think they have drawbacks when compared with Sass Modules. Here are the drawbacks I saw when looking at Compiled in particular:</p>
+<ul>
+<li>Styles are still inserted when a component mounts for the first time, which forces the browser to recalculate the styles on every DOM node. (This drawback was discussed in the section title &quot;The Ugly&quot;.)</li>
+<li>Dynamic styles like the <code>color</code> prop in <a href="https://compiledcssinjs.com/#speed-up-your-styles">this example</a> cannot be extracted at build time, so Compiled adds the value as a CSS variable using the <code>style</code> prop (a.k.a. inline styles). Inline styles are known to cause suboptimal performance when applied many elements.</li>
+<li>The library still inserts boilerplate components into your React tree as shown <a href="https://compiledcssinjs.com/#speed-up-your-styles">here</a>. This will clutter up the React DevTools just like runtime CSS-in-JS.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Thanks for reading this deep dive into runtime CSS-in-JS. Like any technology, it has its pros and cons. Ultimately, it's up to you as a developer to evaluate these pros and cons and then make an informed decision about whether the technology is right for your use case. For us at Spot, the runtime performance cost of Emotion far outweighed the DX benefits, especially when you consider that the alternative of Sass Modules + utility classes still has a good DX while providing vastly superior performance.</p>
+<h2>This article is reprinted from</h2>
+<p><strong><a href="https://link.zhihu.com/?target=https%3A//dev.to/srmagura/why-were-breaking-up-wiht-css-in-js-4g9b">Why We're Breaking Up with CSS-in-JS</a></strong></p>
+<p>Some good Chinese articles： <strong><a href="https://zhuanlan.zhihu.com/p/583155810">精读《我们为何弃用 css-in-js》</a></strong></p>
+]]></content>
+        <author>
+            <name>Bohua Xu</name>
+            <email>xu2526@outlook.com</email>
+            <uri>https://xubh.top</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[?.]]></title>
         <id>https://xubh.top/posts/jottingsl</id>
