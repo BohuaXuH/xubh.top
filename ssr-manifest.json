@@ -37,149 +37,149 @@
   "../../logo-xudark.svg?url": [],
   "../../lofo-xu.svg?url": [],
   "src/components/NavBar.vue?vue&type=script&setup=true&lang.ts": [],
-  "src/components/NavBar.vue?vue&type=style&index=0&scoped=161b266a&lang.css": [],
+  "src/components/NavBar.vue?vue&type=style&index=0&scoped=6d3d8e86&lang.css": [],
   "src/components/NavBar.vue": [],
   "src/App.vue?vue&type=script&setup=true&lang.ts": [],
   "src/main.ts": [],
   "index.html": [],
-  "assets/app.04235ff5.js-unocss-hash.css": [],
+  "assets/app.1583847e.js-unocss-hash.css": [],
   "pages/blogroll.md": [
-    "/assets/blogroll.70af81db.js"
+    "/assets/blogroll.98862db5.js"
   ],
   "pages/bookmarks.md": [
-    "/assets/bookmarks.4431a3fa.js"
+    "/assets/bookmarks.85c9addb.js"
   ],
   "pages/jottings.md": [
-    "/assets/jottings.72ce66be.js"
+    "/assets/jottings.ade0cbf1.js"
   ],
   "src/components/AppLink.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/SubNav.vue_vue_type_script_setup_true_lang.e110f905.js"
+    "/assets/SubNav.vue_vue_type_script_setup_true_lang.dff28ca5.js"
   ],
   "src/components/ListPosts.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/SubNav.vue_vue_type_script_setup_true_lang.e110f905.js"
+    "/assets/SubNav.vue_vue_type_script_setup_true_lang.dff28ca5.js"
   ],
   "src/components/SubNav.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/SubNav.vue_vue_type_script_setup_true_lang.e110f905.js"
+    "/assets/SubNav.vue_vue_type_script_setup_true_lang.dff28ca5.js"
   ],
   "src/components/icons/Vitest.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/Unocss.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/VueDemi.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/VueReactivity.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/VueUse.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/icons/Slidev.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/ListProjects.vue?vue&type=script&setup=true&lang.ts": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/ListProjects.vue?vue&type=style&index=0&scoped=18c53f65&lang.css": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "src/components/ListProjects.vue": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "pages/projects.md": [
-    "/assets/projects.78ebe3ad.js",
+    "/assets/projects.748734bc.js",
     "/assets/projects.e1746190.css"
   ],
   "pages/react.md": [
-    "/assets/react.6fcf82be.js"
+    "/assets/react.e77a56e3.js"
   ],
   "pages/vue.md": [
-    "/assets/vue.eda1794d.js"
+    "/assets/vue.94a949fd.js"
   ],
   "pages/wechat.md": [
-    "/assets/wechat.fc8117a5.js"
+    "/assets/wechat.a135cd02.js"
   ],
   "pages/[...404].md": [
-    "/assets/_...404_.429a6e18.js"
+    "/assets/_...404_.7cb67a3b.js"
   ],
   "pages/links/chat-zh.md": [
-    "/assets/chat-zh.f9870c53.js"
+    "/assets/chat-zh.5154a6bc.js"
   ],
   "pages/posts/Context.md": [
-    "/assets/Context.a018fbb7.js"
+    "/assets/Context.6530dc0c.js"
   ],
   "pages/posts/Css in Js.md": [
-    "/assets/Css in Js.80674e66.js"
+    "/assets/Css in Js.edc34ef6.js"
   ],
   "pages/posts/destructuring-with-object-or-array.md": [
-    "/assets/destructuring-with-object-or-array.a05c5373.js"
+    "/assets/destructuring-with-object-or-array.b4117904.js"
   ],
   "pages/posts/flipclock.md": [
-    "/assets/flipclock.3ac93457.js"
+    "/assets/flipclock.1202b2ab.js"
   ],
   "pages/posts/github-co-authors.md": [
-    "/assets/github-co-authors.2e6d9827.js"
+    "/assets/github-co-authors.7509eeb1.js"
   ],
   "pages/posts/GSAP.md": [
-    "/assets/GSAP.678fc0e4.js"
+    "/assets/GSAP.07e17a7a.js"
   ],
   "pages/posts/index.md": [
-    "/assets/index.0924fe1c.js"
+    "/assets/index.88f3cf72.js"
   ],
   "pages/posts/introduction-to-vitest-vue-nation-2022.md": [
-    "/assets/introduction-to-vitest-vue-nation-2022.703e0134.js"
+    "/assets/introduction-to-vitest-vue-nation-2022.155b846e.js"
   ],
   "pages/posts/jottingsl.md": [
-    "/assets/jottingsl.28a47344.js"
+    "/assets/jottingsl.b616df28.js"
   ],
   "pages/posts/jottingsoo.md": [
-    "/assets/jottingsoo.5402ed60.js"
+    "/assets/jottingsoo.4f8ed539.js"
   ],
   "pages/posts/propsdaring.md": [
-    "/assets/propsdaring.2d28cdf9.js"
+    "/assets/propsdaring.6f541150.js"
   ],
   "pages/posts/ReactNactive.md": [
-    "/assets/ReactNactive.35c6a689.js"
+    "/assets/ReactNactive.0889a8d8.js"
   ],
   "pages/posts/react_toolkit.md": [
-    "/assets/react_toolkit.ec0ce1ea.js"
+    "/assets/react_toolkit.c78c455c.js"
   ],
   "pages/posts/reducer.md": [
-    "/assets/reducer.265202d0.js"
+    "/assets/reducer.464978d2.js"
   ],
   "pages/posts/reduceroo.md": [
-    "/assets/reduceroo.d650c745.js"
+    "/assets/reduceroo.0b9f55b3.js"
   ],
   "pages/posts/reviewcanvas.md": [
-    "/assets/reviewcanvas.16f7893e.js"
+    "/assets/reviewcanvas.2b7d2bea.js"
   ],
   "pages/posts/simpledataprocessing.md": [
-    "/assets/simpledataprocessing.045d07b4.js"
+    "/assets/simpledataprocessing.7a2a1f8a.js"
   ],
   "pages/posts/types.md": [
-    "/assets/types.d1dad2b8.js"
+    "/assets/types.255e7420.js"
   ],
   "pages/posts/useStateoo.md": [
-    "/assets/useStateoo.18c09a50.js"
+    "/assets/useStateoo.0941d723.js"
   ],
   "pages/posts/vue2tovue3.md": [
-    "/assets/vue2tovue3.11042a27.js"
+    "/assets/vue2tovue3.f2cc600f.js"
   ],
   "pages/posts/weather.md": [
-    "/assets/weather.59384108.js"
+    "/assets/weather.3c53557d.js"
   ],
   "pages/posts/whybreakingccinjs.md": [
-    "/assets/whybreakingccinjs.5ce6bded.js"
+    "/assets/whybreakingccinjs.3d579e03.js"
   ]
 }
