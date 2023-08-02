@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://antfu.me/</id>
     <title>Bohua xu</title>
-    <updated>2023-07-03T05:15:55.891Z</updated>
+    <updated>2023-08-02T02:21:05.047Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <author>
         <name>Bohua Xu</name>
@@ -385,25 +385,25 @@ console.log(customerCity); // “暗之城”
     </entry>
     <entry>
         <title type="html"><![CDATA[useContext -useReducer]]></title>
-        <id>https://xubh.top/posts/destructuring-with-object-or-array</id>
-        <link href="https://xubh.top/posts/destructuring-with-object-or-array"/>
+        <id>https://xubh.top/posts/useContextuseReducer</id>
+        <link href="https://xubh.top/posts/useContextuseReducer"/>
         <updated>2021-12-21T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[Prefer object destructure or array? Can we support both?]]></summary>
         <content type="html"><![CDATA[<p>[[toc]]</p>
 <h2>useContext</h2>
 <pre><code class="language-js">const CountContext = React.createContext()
-//CountProvider和useCount写在外部导入
+// CountProvider和useCount写在外部导入
 function CountProvider(props) {
   const [count, setCount] = React.useState(0)
   const value = [count, setCount]
   return &lt;CountContext.Provider value={value} {...props} /&gt;
 }
 
-function useCount() {                        //封装useCount
+function useCount() { // 封装useCount
   const context = React.useContext(CountContext)
-  if (!context) {
+  if (!context)
     throw new Error('useCount must be used within a CountProvider')
-  }
+
   return context
 }
 
